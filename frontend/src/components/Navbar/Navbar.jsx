@@ -1,3 +1,5 @@
+import { NavLink } from "react-router";
+import "./Navbar.css";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
@@ -17,7 +19,9 @@ function OffcanvasExample() {
           className='bg-body-tertiary'
         >
           <Container fluid>
-            <Navbar.Brand href='#'>Navbar Offcanvas</Navbar.Brand>
+            <NavLink className='navLink navTitle' to='/'>
+              Task Manager
+            </NavLink>
             <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
             <Navbar.Offcanvas
               id={`offcanvasNavbar-expand-${expand}`}
@@ -31,8 +35,12 @@ function OffcanvasExample() {
               </Offcanvas.Header>
               <Offcanvas.Body>
                 <Nav className='justify-content-end flex-grow-1 pe-3'>
-                  <Nav.Link href='#action1'>Home</Nav.Link>
-                  <Nav.Link href='#action2'>Link</Nav.Link>
+                  <NavLink className='navLink home' to='/'>
+                    Home
+                  </NavLink>
+                  <NavLink className='navLink' to='/contact'>
+                    Contact
+                  </NavLink>
                   <NavDropdown
                     title='Dropdown'
                     id={`offcanvasNavbarDropdown-expand-${expand}`}
