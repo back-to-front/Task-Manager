@@ -1,0 +1,198 @@
+/* TodoItem Styles */
+.todo-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px;
+  background-color: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.todo-item:hover {
+  border-color: #cbd5e1;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.todo-item.completed {
+  background-color: #f1f5f9;
+  opacity: 0.7;
+}
+
+.todo-content {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  gap: 12px;
+}
+
+.todo-checkbox {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.todo-text {
+  flex: 1;
+  font-size: 16px;
+  color: #374151;
+  cursor: pointer;
+  user-select: none;
+}
+
+.todo-item.completed .todo-text {
+  text-decoration: line-through;
+  color: #9ca3af;
+}
+
+.edit-input-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+}
+
+.edit-input {
+  flex: 1;
+  padding: 8px 12px;
+  border: 2px solid #4f46e5;
+  border-radius: 6px;
+  font-size: 16px;
+  outline: none;
+}
+
+.edit-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.save-btn,
+.cancel-btn {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.save-btn {
+  background-color: #10b981;
+  color: white;
+}
+
+.save-btn:hover {
+  background-color: #059669;
+}
+
+.cancel-btn {
+  background-color: #6b7280;
+  color: white;
+}
+
+.cancel-btn:hover {
+  background-color: #4b5563;
+}
+
+.todo-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.edit-btn,
+.delete-btn {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.edit-btn {
+  background-color: #f59e0b;
+  color: white;
+}
+
+.edit-btn:hover {
+  background-color: #d97706;
+}
+
+.delete-btn {
+  background-color: #ef4444;
+  color: white;
+}
+
+.delete-btn:hover {
+  background-color: #dc2626;
+}
+
+/* Enhanced todo items for desktop */
+@media (min-width: 768px) {
+  .todo-item {
+    padding: 20px 24px;
+  }
+
+  .todo-item:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-1px);
+  }
+
+  .todo-content {
+    gap: 16px;
+  }
+
+  .todo-checkbox {
+    width: 20px;
+    height: 20px;
+  }
+
+  .todo-text {
+    font-size: 18px;
+  }
+}
+
+/* Enhanced action buttons for desktop */
+@media (min-width: 768px) {
+  .todo-actions {
+    gap: 10px;
+  }
+
+  .edit-btn,
+  .delete-btn {
+    padding: 8px 16px;
+    font-size: 14px;
+    min-width: 70px;
+  }
+
+  .edit-input {
+    padding: 10px 14px;
+    font-size: 18px;
+  }
+
+  .save-btn,
+  .cancel-btn {
+    padding: 8px 16px;
+    font-size: 14px;
+    min-width: 70px;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 640px) {
+  .todo-item {
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .todo-content {
+    width: 100%;
+  }
+
+  .todo-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+}
