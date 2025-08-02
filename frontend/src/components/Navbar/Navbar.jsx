@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { NavLink } from "react-router";
 import "./Navbar.css";
 import Button from "react-bootstrap/Button";
@@ -9,6 +10,12 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import Offcanvas from "react-bootstrap/Offcanvas";
 
 function OffcanvasExample() {
+  const [expanded, setExpanded] = useState(false);
+
+  const handleNavLinkClick = () => {
+    setExpanded(false);
+  };
+
   return (
     <>
       {["sm"].map((expand) => (
@@ -17,9 +24,15 @@ function OffcanvasExample() {
           expand={expand}
           sticky='top'
           className='bg-body-tertiary'
+          expanded={expanded}
+          onToggle={setExpanded}
         >
           <Container fluid>
-            <NavLink className='navLink navTitle' to='/'>
+            <NavLink
+              className='navLink navTitle'
+              to='/'
+              onClick={handleNavLinkClick}
+            >
               Task Manager
             </NavLink>
             <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
@@ -35,22 +48,41 @@ function OffcanvasExample() {
               </Offcanvas.Header>
               <Offcanvas.Body>
                 <Nav className='justify-content-end flex-grow-1 pe-3'>
-                  <NavLink className='navLink home' to='/'>
+                  <NavLink
+                    className='navLink home'
+                    to='/'
+                    onClick={handleNavLinkClick}
+                  >
                     Home
                   </NavLink>
-                  <NavLink className='navLink' to='/contact'>
+                  <NavLink
+                    className='navLink'
+                    to='/contact'
+                    onClick={handleNavLinkClick}
+                  >
                     Contact
                   </NavLink>
                   <NavDropdown
                     title='Dropdown'
                     id={`offcanvasNavbarDropdown-expand-${expand}`}
                   >
-                    <NavDropdown.Item href='#action3'>Action</NavDropdown.Item>
-                    <NavDropdown.Item href='#action4'>
+                    <NavDropdown.Item
+                      href='#action3'
+                      onClick={handleNavLinkClick}
+                    >
+                      Action
+                    </NavDropdown.Item>
+                    <NavDropdown.Item
+                      href='#action4'
+                      onClick={handleNavLinkClick}
+                    >
                       Another action
                     </NavDropdown.Item>
                     <NavDropdown.Divider />
-                    <NavDropdown.Item href='#action5'>
+                    <NavDropdown.Item
+                      href='#action5'
+                      onClick={handleNavLinkClick}
+                    >
                       Something else here
                     </NavDropdown.Item>
                   </NavDropdown>
