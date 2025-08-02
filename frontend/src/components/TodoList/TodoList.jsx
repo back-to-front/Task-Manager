@@ -1,4 +1,4 @@
-import TodoItem from "./TodoItem";
+import TodoItem from "../TodoItem/TodoItem";
 import "./TodoList.css";
 
 function TodoList({ todos, onToggleTodo, onEditTodo, onDeleteTodo }) {
