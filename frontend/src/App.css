@@ -1,0 +1,29 @@
+/* App Base Styles */
+.app {
+  min-height: 100vh;
+  width: 100%;
+  background-color: #f8fafc;
+  padding: 20px 0;
+}
+
+/* Enhanced app layout for desktop */
+@media (min-width: 768px) {
+  .app {
+    padding: 40px 0;
+  }
+}
+
+/* Reset some default styles */
+* {
+  box-sizing: border-box;
+}
+
+#root {
+  width: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
