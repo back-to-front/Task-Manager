@@ -45,7 +45,7 @@
   cursor: not-allowed;
 }
 
-/* Enhanced form for desktop */
+/* Desktop Enhancements */
 @media (min-width: 768px) {
   .todo-form {
     margin-bottom: 40px;
@@ -56,16 +56,7 @@
     max-width: 800px;
     margin: 0 auto;
   }
-}
 
-@media (min-width: 1024px) {
-  .input-group {
-    max-width: 1000px;
-  }
-}
-
-/* Enhanced input and button for desktop */
-@media (min-width: 768px) {
   .todo-input {
     padding: 16px 20px;
     font-size: 18px;
@@ -78,7 +69,13 @@
   }
 }
 
-/* Responsive Design */
+@media (min-width: 1024px) {
+  .input-group {
+    max-width: 1000px;
+  }
+}
+
+/* Mobile Responsive Design */
 @media (max-width: 640px) {
   .input-group {
     flex-direction: column;
