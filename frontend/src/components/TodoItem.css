@@ -1,13 +1,16 @@
 /* TodoItem Styles */
 .todo-item {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   padding: 15px;
   background-color: white;
   border: 1px solid #e2e8f0;
   border-radius: 8px;
   transition: all 0.2s ease;
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 60px;
 }
 
 .todo-item:hover {
@@ -22,15 +25,19 @@
 
 .todo-content {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   flex: 1;
   gap: 12px;
+  min-width: 0;
+  width: 100%;
 }
 
 .todo-checkbox {
   width: 18px;
   height: 18px;
   cursor: pointer;
+  margin-top: 2px;
+  flex-shrink: 0;
 }
 
 .todo-text {
@@ -39,6 +46,13 @@
   color: #374151;
   cursor: pointer;
   user-select: none;
+  word-wrap: break-word;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  line-height: 1.5;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .todo-item.completed .todo-text {
@@ -48,9 +62,11 @@
 
 .edit-input-group {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 10px;
   flex: 1;
+  min-width: 0;
+  width: 100%;
 }
 
 .edit-input {
@@ -60,11 +76,20 @@
   border-radius: 6px;
   font-size: 16px;
   outline: none;
+  min-width: 0;
+  max-width: 100%;
+  resize: vertical;
+  min-height: 38px;
+  line-height: 1.5;
+  font-family: inherit;
 }
 
 .edit-buttons {
   display: flex;
   gap: 8px;
+  flex-shrink: 0;
+  align-self: flex-start;
+  margin-top: 2px;
 }
 
 .save-btn,
@@ -98,6 +123,9 @@
 .todo-actions {
   display: flex;
   gap: 8px;
+  flex-shrink: 0;
+  align-self: flex-start;
+  margin-top: 2px;
 }
 
 .edit-btn,
@@ -185,14 +213,29 @@
     flex-direction: column;
     gap: 10px;
     align-items: flex-start;
+    min-height: 80px;
   }
 
   .todo-content {
     width: 100%;
+    min-width: 0;
   }
 
   .todo-actions {
     width: 100%;
     justify-content: flex-end;
+    margin-top: 8px;
+    align-self: stretch;
+  }
+
+  .edit-buttons {
+    width: 100%;
+    justify-content: flex-end;
+    margin-top: 8px;
+  }
+
+  .todo-text {
+    font-size: 14px;
+    line-height: 1.4;
   }
 }

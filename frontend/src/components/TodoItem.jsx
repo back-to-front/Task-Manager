@@ -40,14 +40,14 @@ function TodoItem({ todo, onToggle, onEdit, onDelete }) {
 
         {isEditing ? (
           <div className='edit-input-group'>
-            <input
-              type='text'
+            <textarea
               value={editText}
               onChange={(e) => setEditText(e.target.value)}
               onKeyDown={handleKeyPress}
               className='edit-input'
               autoFocus
-              maxLength={200}
+              maxLength={500}
+              rows='2'
             />
             <div className='edit-buttons'>
               <button onClick={handleSave} className='save-btn'>
