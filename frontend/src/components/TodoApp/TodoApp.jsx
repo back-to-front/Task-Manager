@@ -6,6 +6,7 @@ import "./TodoApp.css";
 function TodoApp() {
   const [todos, setTodos] = useState([]);
   const [nextId, setNextId] = useState(1);
+  const [filter, setFilter] = useState("all");
 
   // Create - Add a new todo
   const addTodo = (text) => {
@@ -55,6 +56,22 @@ function TodoApp() {
   const completedCount = todos.filter((todo) => todo.completed).length;
   const activeCount = todos.length - completedCount;
 
+  // Filter todos based on the current filter selection
+  const getFilteredTodos = () => {
+    switch (filter) {
+      case "completed":
+        return todos.filter((todo) => todo.completed);
+      case "active":
+        return todos.filter((todo) => !todo.completed);
+      case "all":
+      default:
+        return todos;
+    }
+  };
+
+  // Get filtered todos
+  const filteredTodos = getFilteredTodos();
+
   return (
     <div className='todo-app'>
       <header className='todo-header'>
@@ -82,16 +99,45 @@ function TodoApp() {
           )}
         </div>
 
+        <div className='todo-filters'>
+          <button
+            className={`filter-btn ${filter === "all" ? "active" : ""}`}
+            onClick={() => setFilter("all")}
+          >
+            All
+          </button>
+          <button
+            className={`filter-btn ${filter === "active" ? "active" : ""}`}
+            onClick={() => setFilter("active")}
+          >
+            Incomplete
+          </button>
+          <button
+            className={`filter-btn ${filter === "completed" ? "active" : ""}`}
+            onClick={() => setFilter("completed")}
+          >
+            Completed
+          </button>
+        </div>
+
         <TodoList
-          todos={todos}
+          todos={filteredTodos}
           onToggleTodo={toggleTodo}
           onEditTodo={editTodo}
           onDeleteTodo={deleteTodo}
         />
 
-        {todos.length === 0 && (
+        {filteredTodos.length === 0 && (
           <div className='empty-state'>
-            <p>No tasks yet. Add one above to get started!</p>
+            {todos.length === 0 ? (
+              <p>No tasks yet. Add one above to get started!</p>
+            ) : filter === "active" ? (
+              <p>No incomplete tasks. Good job!</p>
+            ) : filter === "completed" ? (
+              <p>No completed tasks yet.</p>
+            ) : (
+              <p>No tasks found.</p>
+            )}
           </div>
         )}
       </main>
