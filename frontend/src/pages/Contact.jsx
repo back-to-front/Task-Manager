@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useForm } from "@formspree/react";
 import "./Contact.css";
 
 export default function Contact() {
@@ -18,11 +19,7 @@ export default function Contact() {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission here
-    console.log("Form submitted:", formData);
-    // You can add actual form submission logic here
-    alert("Thank you for your message! We'll get back to you soon.");
+    useForm("mvgqwzwg");
 
     // Reset form after submission
     setFormData({
@@ -41,7 +38,12 @@ export default function Contact() {
           <p>We'd love to hear from you. Send us a message!</p>
         </header>
 
-        <form className='contact-form' onSubmit={handleSubmit}>
+        <form
+          className='contact-form'
+          onSubmit={handleSubmit}
+          method='POST'
+          action='https://formspree.io/f/mvgqwzwg'
+        >
           <div className='form-row'>
             <div className='form-group'>
               <label htmlFor='firstName' className='form-label'>
