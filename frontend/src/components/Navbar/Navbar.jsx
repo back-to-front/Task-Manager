@@ -50,7 +50,7 @@ function OffcanvasExample() {
                 <Nav className='justify-content-end flex-grow-1 pe-3'>
                   <NavLink
                     className='navLink home'
-                    to='/'
+                    to='/home'
                     onClick={handleNavLinkClick}
                   >
                     Home
@@ -65,6 +65,7 @@ function OffcanvasExample() {
                   <NavDropdown
                     title='Dropdown'
                     id={`offcanvasNavbarDropdown-expand-${expand}`}
+                    className='navDropdown'
                   >
                     <NavDropdown.Item
                       href='#action3'
@@ -87,7 +88,7 @@ function OffcanvasExample() {
                     </NavDropdown.Item>
                   </NavDropdown>
                 </Nav>
-                <Form className='d-flex'>
+                {/* <Form className='d-flex'>
                   <Form.Control
                     type='search'
                     placeholder='Search'
@@ -95,7 +96,7 @@ function OffcanvasExample() {
                     aria-label='Search'
                   />
                   <Button variant='outline-success'>Search</Button>
-                </Form>
+                </Form> */}
               </Offcanvas.Body>
             </Navbar.Offcanvas>
           </Container>

@@ -1,6 +1,13 @@
 import "./HeroSection.css";
+import { useNavigate } from "react-router";
 
 function HeroSection() {
+  const navigate = useNavigate();
+
+  const handleGetStarted = () => {
+    navigate("/home");
+  };
+
   return (
     <section className='hero-section'>
       <div className='hero-content'>
@@ -13,7 +20,9 @@ function HeroSection() {
           productivity. Stay organized, meet deadlines, and achieve your goals.
         </p>
         <div className='hero-buttons'>
-          <button className='cta-button primary'>Get Started Free</button>
+          <button className='cta-button primary' onClick={handleGetStarted}>
+            Get Started Free
+          </button>
           <button className='cta-button secondary'>Watch Demo</button>
         </div>
       </div>
