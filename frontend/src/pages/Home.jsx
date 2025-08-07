@@ -1,41 +1,24 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import TodoApp from "../components/TodoApp/TodoApp";
 import "./Home.css";
 import { Toaster } from "react-hot-toast";
 import RateLimitedUI from "../components/RateLimitedUI/RateLimitedUI";
-import axios from "axios";
-import toast from "react-hot-toast";
 
 export default function Home() {
   const [isRateLimited, setIsRateLimited] = useState(false);
-  const [notes, setNotes] = useState([]);
-  const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const fetchNotes = async () => {
-      try {
-        const res = await axios.get("http://localhost:5001/api/notes");
-        console.log(res.data);
-        setNotes(res.data);
-        setIsRateLimited(false);
-      } catch (error) {
-        console.log("Error fetching notes");
-        if (error.response?.status === 429) {
-          setIsRateLimited(true);
-        } else {
-          toast.error("Failed to fetch notes");
-        }
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchNotes();
-  }, []);
+  // Pass the rate limiting handler to TodoApp
+  const handleRateLimit = (limited) => {
+    setIsRateLimited(limited);
+  };
 
   return (
     <div className='app'>
-      {isRateLimited ? <RateLimitedUI /> : <TodoApp />}
+      {isRateLimited ? (
+        <RateLimitedUI />
+      ) : (
+        <TodoApp onRateLimited={handleRateLimit} />
+      )}
       <Toaster
         position='top-right'
         toastOptions={{

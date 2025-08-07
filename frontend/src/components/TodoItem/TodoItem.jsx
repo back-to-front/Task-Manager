@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, memo } from "react";
 import "./TodoItem.css";
 
 function TodoItem({ todo, onToggle, onEdit, onDelete }) {
@@ -79,4 +79,5 @@ function TodoItem({ todo, onToggle, onEdit, onDelete }) {
   );
 }
 
-export default TodoItem;
+// Use memo to prevent unnecessary re-renders
+export default memo(TodoItem);

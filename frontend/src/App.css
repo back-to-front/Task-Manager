@@ -12,3 +12,17 @@
     padding: 40px 0;
   }
 }
+
+/* Loading spinner */
+.page-loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+
+.loading-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+}

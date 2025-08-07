@@ -1,3 +1,4 @@
+import { memo } from "react";
 import TodoItem from "../TodoItem/TodoItem";
 import "./TodoList.css";
 
@@ -22,4 +23,5 @@ function TodoList({ todos, onToggleTodo, onEditTodo, onDeleteTodo }) {
   );
 }
 
-export default TodoList;
+// Memoize the component to prevent unnecessary re-renders
+export default memo(TodoList);
