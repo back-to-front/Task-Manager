@@ -23,3 +23,14 @@ temp
 *.njsproj
 *.sln
 *.sw?
+
+# ENV
+.env
+.env.*
+!.env.example
+!env.test
+!.env.ci
+credentials.*
+secrets.*
+*.pem
+*.key
