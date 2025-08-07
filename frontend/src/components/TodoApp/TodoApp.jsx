@@ -1,56 +1,136 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import TodoForm from "../TodoForm/TodoForm";
 import TodoList from "../TodoList/TodoList";
 import "./TodoApp.css";
+import { notesAPI } from "../../APIService.js";
+import toast from "react-hot-toast";
 
 function TodoApp() {
   const [todos, setTodos] = useState([]);
-  const [nextId, setNextId] = useState(1);
   const [filter, setFilter] = useState("all");
+  const [loading, setLoading] = useState(true);
+  const [isRateLimited, setIsRateLimited] = useState(false);
+
+  // Load todos when component mounts
+  useEffect(() => {
+    loadTodos();
+  }, []);
+
+  const loadTodos = async () => {
+    try {
+      setLoading(true);
+      const todosData = await notesAPI.getAllTodos();
+      setTodos(todosData);
+      setIsRateLimited(false);
+    } catch (error) {
+      if (error.message === "RATE_LIMITED") {
+        setIsRateLimited(true);
+      } else {
+        toast.error(error.message);
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
 
   // Create - Add a new todo
-  const addTodo = (text) => {
+  const addTodo = async (text) => {
     if (text.trim() === "") return;
 
-    const newTodo = {
-      id: nextId,
-      text: text.trim(),
-      completed: false,
-      createdAt: new Date().toISOString(),
-    };
-
-    setTodos([...todos, newTodo]);
-    setNextId(nextId + 1);
+    try {
+      const newTodo = await notesAPI.createTodo(text.trim());
+      setTodos((prevTodos) => [newTodo, ...prevTodos]);
+      toast.success("Task added successfully!");
+    } catch (error) {
+      if (error.message === "RATE_LIMITED") {
+        setIsRateLimited(true);
+      } else {
+        toast.error(error.message);
+      }
+    }
   };
 
   // Update - Toggle completion status
-  const toggleTodo = (id) => {
-    setTodos(
-      todos.map((todo) =>
-        todo.id === id ? { ...todo, completed: !todo.completed } : todo
-      )
-    );
+  const toggleTodo = async (id) => {
+    const todo = todos.find((t) => t.id === id);
+    if (!todo) return;
+
+    try {
+      const updatedTodo = await notesAPI.updateTodo(id, {
+        text: todo.text,
+        completed: !todo.completed,
+      });
+
+      setTodos((prevTodos) =>
+        prevTodos.map((todo) => (todo.id === id ? updatedTodo : todo))
+      );
+    } catch (error) {
+      if (error.message === "RATE_LIMITED") {
+        setIsRateLimited(true);
+      } else {
+        toast.error(error.message);
+      }
+    }
   };
 
   // Update - Edit todo text
-  const editTodo = (id, newText) => {
+  const editTodo = async (id, newText) => {
     if (newText.trim() === "") return;
 
-    setTodos(
-      todos.map((todo) =>
-        todo.id === id ? { ...todo, text: newText.trim() } : todo
-      )
-    );
+    const todo = todos.find((t) => t.id === id);
+    if (!todo) return;
+
+    try {
+      const updatedTodo = await notesAPI.updateTodo(id, {
+        text: newText.trim(),
+        completed: todo.completed,
+      });
+
+      setTodos((prevTodos) =>
+        prevTodos.map((todo) => (todo.id === id ? updatedTodo : todo))
+      );
+      toast.success("Task updated successfully!");
+    } catch (error) {
+      if (error.message === "RATE_LIMITED") {
+        setIsRateLimited(true);
+      } else {
+        toast.error(error.message);
+      }
+    }
   };
 
   // Delete - Remove a todo
-  const deleteTodo = (id) => {
-    setTodos(todos.filter((todo) => todo.id !== id));
+  const deleteTodo = async (id) => {
+    try {
+      await notesAPI.deleteTodo(id);
+      setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
+      toast.success("Task deleted successfully!");
+    } catch (error) {
+      if (error.message === "RATE_LIMITED") {
+        setIsRateLimited(true);
+      } else {
+        toast.error(error.message);
+      }
+    }
   };
 
   // Clear all completed todos
-  const clearCompleted = () => {
-    setTodos(todos.filter((todo) => !todo.completed));
+  const clearCompleted = async () => {
+    const completedTodos = todos.filter((todo) => todo.completed);
+
+    try {
+      await Promise.all(
+        completedTodos.map((todo) => notesAPI.deleteTodo(todo.id))
+      );
+      setTodos(todos.filter((todo) => !todo.completed));
+      toast.success("Completed tasks cleared!");
+    } catch (error) {
+      if (error.message === "RATE_LIMITED") {
+        setIsRateLimited(true);
+      } else {
+        toast.error("Failed to clear completed tasks");
+      }
+    }
   };
 
   const completedCount = todos.filter((todo) => todo.completed).length;
@@ -71,6 +151,38 @@ function TodoApp() {
 
   // Get filtered todos
   const filteredTodos = getFilteredTodos();
+
+  // Return rate limited component if needed
+  if (isRateLimited) {
+    return (
+      <div className='todo-app'>
+        <header className='todo-header'>
+          <h1>Task Manager</h1>
+          <p>Rate limit reached. Please wait a moment.</p>
+        </header>
+        <div style={{ textAlign: "center", padding: "40px" }}>
+          <button
+            className='filter-btn'
+            onClick={loadTodos}
+            style={{ marginTop: "20px" }}
+          >
+            Try Again
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  if (loading) {
+    return (
+      <div className='todo-app'>
+        <header className='todo-header'>
+          <h1>Task Manager</h1>
+          <p>Loading your tasks...</p>
+        </header>
+      </div>
+    );
+  }
 
   return (
     <div className='todo-app'>

@@ -2,13 +2,13 @@ import mongoose from 'mongoose';
 
 const noteSchema = new mongoose.Schema(
   {
-    title: {
+    text: {
       type: String,
       required: true,
     },
-    content: {
-      type: String,
-      required: true,
+    completed: {
+      type: Boolean,
+      default: false,
     },
   },
   { timestamps: true } // create createdAt and updatedAt fields
