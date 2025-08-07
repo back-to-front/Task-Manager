@@ -5,6 +5,8 @@
   padding: 20px;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
     sans-serif;
+  background-color: #eae2b7;
+  min-height: 100vh;
 }
 
 .todo-header {
@@ -13,14 +15,14 @@
 }
 
 .todo-header h1 {
-  color: #333;
+  color: #003049;
   margin: 0 0 10px 0;
   font-size: 2.5rem;
   font-weight: 300;
 }
 
 .todo-header p {
-  color: #666;
+  color: #003049;
   margin: 0;
   font-size: 1.1rem;
 }
@@ -31,25 +33,25 @@
   align-items: center;
   margin-bottom: 20px;
   padding: 15px;
-  background-color: #f8fafc;
+  background-color: #fcbf49;
   border-radius: 8px;
-  border: 1px solid #e2e8f0;
+  border: 1px solid #f77f00;
 }
 
 .stat {
   font-size: 14px;
-  color: #64748b;
+  color: #003049;
 }
 
 .stat strong {
-  color: #334155;
+  color: #003049;
   font-weight: 600;
 }
 
 .clear-completed-btn {
   margin-left: auto;
   padding: 6px 12px;
-  background-color: #ef4444;
+  background-color: #d62828;
   color: white;
   border: none;
   border-radius: 6px;
@@ -59,13 +61,13 @@
 }
 
 .clear-completed-btn:hover {
-  background-color: #dc2626;
+  background-color: #f77f00;
 }
 
 .empty-state {
   text-align: center;
   padding: 40px 20px;
-  color: #9ca3af;
+  color: #003049;
   font-style: italic;
 }
 
@@ -78,10 +80,10 @@
 
 .filter-btn {
   padding: 8px 15px;
-  background-color: #f1f5f9;
-  border: 1px solid #e2e8f0;
+  background-color: #ffffff;
+  border: 1px solid #fcbf49;
   border-radius: 6px;
-  color: #64748b;
+  color: #003049;
   cursor: pointer;
   font-size: 14px;
   font-weight: 500;
@@ -89,14 +91,14 @@
 }
 
 .filter-btn:hover {
-  background-color: #e2e8f0;
-  color: #334155;
+  background-color: #fcbf49;
+  color: #003049;
 }
 
 .filter-btn.active {
-  background-color: #3b82f6;
+  background-color: #f77f00;
   color: white;
-  border-color: #3b82f6;
+  border-color: #d62828;
 }
 /* Desktop Layout Enhancements */
 @media (min-width: 768px) {

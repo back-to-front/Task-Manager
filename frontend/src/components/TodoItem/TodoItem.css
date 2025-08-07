@@ -4,8 +4,8 @@
   align-items: flex-start;
   justify-content: space-between;
   padding: 15px;
-  background-color: white;
-  border: 1px solid #e2e8f0;
+  background-color: #ffffff;
+  border: 1px solid #fcbf49;
   border-radius: 8px;
   transition: all 0.2s ease;
   width: 100%;
@@ -14,13 +14,13 @@
 }
 
 .todo-item:hover {
-  border-color: #cbd5e1;
+  border-color: #f77f00;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .todo-item.completed {
-  background-color: #f1f5f9;
-  opacity: 0.7;
+  background-color: #fcbf49;
+  opacity: 0.85;
 }
 
 .todo-content {
@@ -43,7 +43,7 @@
 .todo-text {
   flex: 1;
   font-size: 16px;
-  color: #374151;
+  color: #003049;
   cursor: pointer;
   user-select: none;
   word-wrap: break-word;
@@ -57,7 +57,7 @@
 
 .todo-item.completed .todo-text {
   text-decoration: line-through;
-  color: #9ca3af;
+  color: #003049;
 }
 
 .edit-input-group {
@@ -72,7 +72,7 @@
 .edit-input {
   flex: 1;
   padding: 8px 12px;
-  border: 2px solid #4f46e5;
+  border: 2px solid #f77f00;
   border-radius: 6px;
   font-size: 16px;
   outline: none;
@@ -82,6 +82,7 @@
   min-height: 38px;
   line-height: 1.5;
   font-family: inherit;
+  color: #003049;
 }
 
 .edit-buttons {
@@ -103,21 +104,22 @@
 }
 
 .save-btn {
-  background-color: #10b981;
+  background-color: #f77f00;
   color: white;
 }
 
 .save-btn:hover {
-  background-color: #059669;
+  background-color: #fcbf49;
+  color: #003049;
 }
 
 .cancel-btn {
-  background-color: #6b7280;
+  background-color: #003049;
   color: white;
 }
 
 .cancel-btn:hover {
-  background-color: #4b5563;
+  background-color: #d62828;
 }
 
 .todo-actions {
@@ -139,21 +141,22 @@
 }
 
 .edit-btn {
-  background-color: #f59e0b;
+  background-color: #f77f00;
   color: white;
 }
 
 .edit-btn:hover {
-  background-color: #d97706;
+  background-color: #fcbf49;
+  color: #003049;
 }
 
 .delete-btn {
-  background-color: #ef4444;
+  background-color: #d62828;
   color: white;
 }
 
 .delete-btn:hover {
-  background-color: #dc2626;
+  background-color: #f77f00;
 }
 
 /* Enhanced todo items for desktop */
@@ -179,10 +182,8 @@
   .todo-text {
     font-size: 18px;
   }
-}
 
-/* Enhanced action buttons for desktop */
-@media (min-width: 768px) {
+  /* Enhanced action buttons for desktop */
   .todo-actions {
     gap: 10px;
   }

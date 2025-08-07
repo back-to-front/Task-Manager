@@ -1,0 +1,17 @@
+/* Home Page Styles */
+.app {
+  background-color: #eae2b7;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Apply the same styles as the landing page for consistent look */
+body {
+  color: #003049;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+}
