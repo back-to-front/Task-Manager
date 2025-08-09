@@ -1,6 +1,13 @@
 import "./CTASection.css";
+import { useNavigate } from "react-router";
 
 function CTASection() {
+  const navigate = useNavigate();
+
+  const handleGetStarted = () => {
+    navigate("/home");
+  };
+
   return (
     <section className='cta-section'>
       <div className='container'>
@@ -10,7 +17,10 @@ function CTASection() {
             Join thousands of users who have transformed their productivity with
             Task Manager.
           </p>
-          <button className='cta-button primary large'>
+          <button
+            className='cta-button primary large'
+            onClick={handleGetStarted}
+          >
             Start Managing Tasks Now
           </button>
           <p className='cta-note'>

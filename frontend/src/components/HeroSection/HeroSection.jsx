@@ -23,7 +23,6 @@ function HeroSection() {
           <button className='cta-button primary' onClick={handleGetStarted}>
             Get Started Free
           </button>
-          <button className='cta-button secondary'>Watch Demo</button>
         </div>
       </div>
       <div className='hero-image'>

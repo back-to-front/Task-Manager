@@ -1,11 +1,29 @@
 import axios from 'axios';
-import toast from 'react-hot-toast';
 
 const API_BASE_URL = 'http://localhost:5001/api';
 
 const api = axios.create({
   baseURL: API_BASE_URL,
+  headers: {
+    'Content-Type': 'application/json',
+  },
 });
+
+// Helper function to transform MongoDB note to frontend todo format
+const transformNote = (note, defaultText = '') => ({
+  id: note._id || `temp-${Date.now()}-${Math.random()}`,
+  text: note.text || defaultText,
+  completed: note.completed || false,
+  createdAt: note.createdAt || new Date().toISOString(),
+});
+
+// Helper function to handle common API errors
+const handleApiError = (error) => {
+  if (error.response?.status === 429) {
+    throw new Error('RATE_LIMITED');
+  }
+  throw new Error('Failed to process request');
+};
 
 export const notesAPI = {
   // Get all todos
@@ -15,17 +33,9 @@ export const notesAPI = {
       if (!Array.isArray(response.data)) {
         return [];
       }
-      return response.data.map((note) => ({
-        id: note._id || `temp-${Date.now()}-${Math.random()}`,
-        text: note.text || '',
-        completed: note.completed || false,
-        createdAt: note.createdAt || new Date().toISOString(),
-      }));
+      return response.data.map((note) => transformNote(note));
     } catch (error) {
-      if (error.response?.status === 429) {
-        throw new Error('RATE_LIMITED');
-      }
-      throw new Error('Failed to fetch todos');
+      handleApiError(error);
     }
   },
 
@@ -33,18 +43,9 @@ export const notesAPI = {
   createTodo: async (text) => {
     try {
       const response = await api.post('/notes', { text });
-      const note = response.data;
-      return {
-        id: note._id || `temp-${Date.now()}-${Math.random()}`,
-        text: note.text || text,
-        completed: note.completed || false,
-        createdAt: note.createdAt || new Date().toISOString(),
-      };
+      return transformNote(response.data, text);
     } catch (error) {
-      if (error.response?.status === 429) {
-        throw new Error('RATE_LIMITED');
-      }
-      throw new Error('Failed to create todo');
+      handleApiError(error);
     }
   },
 
@@ -52,19 +53,9 @@ export const notesAPI = {
   updateTodo: async (id, updates) => {
     try {
       const response = await api.put(`/notes/${id}`, updates);
-      const note = response.data;
-      return {
-        id: note._id || id,
-        text: note.text || updates.text,
-        completed:
-          note.completed !== undefined ? note.completed : updates.completed,
-        createdAt: note.createdAt || new Date().toISOString(),
-      };
+      return transformNote(response.data, updates.text);
     } catch (error) {
-      if (error.response?.status === 429) {
-        throw new Error('RATE_LIMITED');
-      }
-      throw new Error('Failed to update todo');
+      handleApiError(error);
     }
   },
 
@@ -74,10 +65,7 @@ export const notesAPI = {
       await api.delete(`/notes/${id}`);
       return { success: true };
     } catch (error) {
-      if (error.response?.status === 429) {
-        throw new Error('RATE_LIMITED');
-      }
-      throw new Error('Failed to delete todo');
+      handleApiError(error);
     }
   },
 };

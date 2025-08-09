@@ -50,8 +50,8 @@ function FeaturesSection() {
             <div className='feature-icon'>🔄</div>
             <h3>Easy Editing</h3>
             <p>
-              Double-click to edit any task. Make changes on the fly without
-              breaking your workflow.
+              Click the edit button to edit any task. Make changes on the fly
+              without breaking your workflow.
             </p>
           </div>
         </div>
