@@ -33,7 +33,7 @@ function FooterSection() {
                 <NavLink to='/contact'>Contact</NavLink>
               </li>
               <li>
-                <a href='#faq'>FAQ</a>
+                <NavLink to='/contact#faq'>FAQ</NavLink>
               </li>
             </ul>
           </div>
@@ -41,7 +41,13 @@ function FooterSection() {
             <h4>Company</h4>
             <ul>
               <li>
-                <a href='#about'>About</a>
+                <a
+                  href='https://github.com/back-to-front/Task-Manager'
+                  target='_blank'
+                  rel='noopener noreferrer'
+                >
+                  About
+                </a>
               </li>
             </ul>
           </div>

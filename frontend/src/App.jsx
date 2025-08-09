@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router";
 import "./App.css";
 import Navbar from "./components/Navbar/Navbar";
 import LoadingSpinner from "./components/LoadingSpinner/LoadingSpinner";
+import ScrollToAnchor from "./components/ScrollToAnchor";
 
 // Lazy load components
 const Landing = lazy(() => import("./pages/Landing"));
@@ -13,6 +14,7 @@ function App() {
   return (
     <>
       <Navbar />
+      <ScrollToAnchor />
       <Suspense
         fallback={
           <div className='page-loader'>
