@@ -56,47 +56,20 @@ function OffcanvasExample() {
                     Home
                   </NavLink>
                   <NavLink
-                    className='navLink'
+                    className='navLink contact'
                     to='/contact'
                     onClick={handleNavLinkClick}
                   >
                     Contact
                   </NavLink>
-                  <NavDropdown
-                    title='Dropdown'
-                    id={`offcanvasNavbarDropdown-expand-${expand}`}
-                    className='navDropdown'
+                  <NavLink
+                    className='navLink'
+                    to='/contact#faq'
+                    onClick={handleNavLinkClick}
                   >
-                    <NavDropdown.Item
-                      href='#action3'
-                      onClick={handleNavLinkClick}
-                    >
-                      Action
-                    </NavDropdown.Item>
-                    <NavDropdown.Item
-                      href='#action4'
-                      onClick={handleNavLinkClick}
-                    >
-                      Another action
-                    </NavDropdown.Item>
-                    <NavDropdown.Divider />
-                    <NavDropdown.Item
-                      href='#action5'
-                      onClick={handleNavLinkClick}
-                    >
-                      Something else here
-                    </NavDropdown.Item>
-                  </NavDropdown>
+                    FAQ
+                  </NavLink>
                 </Nav>
-                {/* <Form className='d-flex'>
-                  <Form.Control
-                    type='search'
-                    placeholder='Search'
-                    className='me-2'
-                    aria-label='Search'
-                  />
-                  <Button variant='outline-success'>Search</Button>
-                </Form> */}
               </Offcanvas.Body>
             </Navbar.Offcanvas>
           </Container>
