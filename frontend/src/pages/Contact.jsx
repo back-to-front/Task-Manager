@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useForm } from "@formspree/react";
+import FAQ from "../components/FAQ/FAQ";
 import "./Contact.css";
 
 export default function Contact() {
@@ -9,6 +10,35 @@ export default function Contact() {
     email: "",
     comments: "",
   });
+
+  // FAQ data
+  const faqData = [
+    {
+      question: "How do I create a new task?",
+      answer:
+        "To create a new task, simply type your task in the input field at the top of the app and press Enter or click the Add button.",
+    },
+    {
+      question: "Can I edit a task after creating it?",
+      answer:
+        "Yes, you can edit a task by clicking the edit icon next to the task, making your changes, and saving them.",
+    },
+    {
+      question: "How do I mark a task as completed?",
+      answer:
+        "Click the checkbox next to the task to mark it as completed. Click it again to mark it as incomplete.",
+    },
+    {
+      question: "Is there a limit to how many tasks I can create?",
+      answer:
+        "While there's no fixed limit, the app does have rate limiting to prevent abuse. For optimal performance, we recommend keeping your active task list under 100 items.",
+    },
+    {
+      question: "Are my tasks saved if I close the browser?",
+      answer:
+        "Yes, all your tasks are automatically saved to our database and will be available when you return to the app.",
+    },
+  ];
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -123,6 +153,9 @@ export default function Contact() {
             Send Message
           </button>
         </form>
+
+        {/* FAQ Component */}
+        <FAQ faqs={faqData} />
       </div>
     </div>
   );

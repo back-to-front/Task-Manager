@@ -1,0 +1,124 @@
+/* FAQ Component Styles */
+.faq-container {
+  width: 100%;
+  margin: 40px 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    sans-serif;
+}
+
+.faq-title {
+  text-align: center;
+  color: #003049;
+  font-size: 2rem;
+  font-weight: 300;
+  margin-bottom: 30px;
+}
+
+.faq-items {
+  background-color: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #fcbf49;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.faq-item {
+  border-bottom: 1px solid #fcbf49;
+}
+
+.faq-item:last-child {
+  border-bottom: none;
+}
+
+.faq-question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #ffffff;
+  color: #003049;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.faq-question:hover {
+  background-color: rgba(252, 191, 73, 0.1);
+}
+
+.faq-icon {
+  font-size: 20px;
+  color: #f77f00;
+  font-weight: bold;
+  transition: transform 0.3s ease;
+}
+
+.faq-item.open .faq-icon {
+  transform: rotate(180deg);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  background-color: rgba(234, 226, 183, 0.2);
+  padding: 0 20px;
+  line-height: 1.5;
+}
+
+.faq-answer.open {
+  max-height: 1000px; /* Large enough to accommodate content */
+  padding: 20px;
+}
+
+.faq-answer p {
+  margin: 0;
+  color: #003049;
+}
+
+/* Desktop Enhancements */
+@media (min-width: 768px) {
+  .faq-container {
+    max-width: 800px;
+    margin: 60px auto;
+  }
+
+  .faq-title {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+  }
+
+  .faq-question {
+    padding: 25px 30px;
+    font-size: 18px;
+  }
+
+  .faq-answer.open {
+    padding: 25px 30px;
+  }
+
+  .faq-answer p {
+    font-size: 16px;
+  }
+}
+
+/* Mobile Responsive Design */
+@media (max-width: 640px) {
+  .faq-container {
+    margin: 30px 0;
+  }
+
+  .faq-title {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+  }
+
+  .faq-question {
+    padding: 15px;
+    font-size: 16px;
+  }
+
+  .faq-answer.open {
+    padding: 15px;
+  }
+}

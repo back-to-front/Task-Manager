@@ -5,7 +5,7 @@ import Navbar from "./components/Navbar/Navbar";
 import LoadingSpinner from "./components/LoadingSpinner/LoadingSpinner";
 
 // Lazy load components
-const Landing = lazy(() => import("./pages/Landing/Landing"));
+const Landing = lazy(() => import("./pages/Landing"));
 const Contact = lazy(() => import("./pages/Contact"));
 const Home = lazy(() => import("./pages/Home"));
 
