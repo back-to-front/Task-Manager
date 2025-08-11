@@ -4,6 +4,14 @@
 
 Austen Cole
 
+## Deployment Information
+
+This application is deployed as a full-stack project using:
+
+- **Frontend**: Deployed on Vercel
+- **Backend**: Deployed on Render
+- **Database**: MongoDB Atlas
+
 ## Overview/Description
 
 Task Manager is a modern, full-stack web application designed to help users organize their daily tasks and boost productivity. The application features a clean, intuitive interface that makes task management effortless, allowing users to add, edit, delete, and track their tasks with real-time updates and smart filtering capabilities.
