@@ -1,17 +1,8 @@
-<<<<<<< HEAD
 # Task Manager
 
 ## Name
 
 Austen Cole
-
-## Deployment Information
-
-This application is deployed as a full-stack project using:
-
-- **Frontend**: Deployed on Vercel
-- **Backend**: Deployed on Render
-- **Database**: MongoDB Atlas
 
 ## Overview/Description
 
@@ -97,6 +88,3 @@ The application consists of a React-based frontend with a professional landing p
 8. **Import/Export Functionality**: Add ability to import tasks from other productivity apps, export data in various formats (CSV, JSON), and backup/restore functionality.
 
 9. **Dark Mode & Themes**: Provide customizable themes, dark mode support, and user interface personalization options for better user experience.
-=======
-## Starting
->>>>>>> parent of 4c45256 (Updated the readme file with appropiate information)
