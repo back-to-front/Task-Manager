@@ -29,7 +29,7 @@ export const notesAPI = {
   // Get all todos
   getAllTodos: async () => {
     try {
-      const response = await api.get('/notes');
+      const response = await api.get('/api/notes');
       if (!Array.isArray(response.data)) {
         return [];
       }
